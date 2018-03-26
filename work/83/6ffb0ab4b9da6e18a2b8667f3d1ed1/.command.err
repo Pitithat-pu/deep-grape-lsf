@@ -1,3 +1,0 @@
-[samopen] SAM header is present: 319 sequences.
-/home/puranach/envs/grape-nf3/lib/R/bin/exec/R: error while loading shared libraries: libbz2.so.1.0: cannot open shared object file: No such file or directory
-/abi/data/puranach/packages/test_grapenf3/work/83/6ffb0ab4b9da6e18a2b8667f3d1ed1/.command.stub: line 99: 26821 Terminated              nxf_trace "$pid" .command.trace

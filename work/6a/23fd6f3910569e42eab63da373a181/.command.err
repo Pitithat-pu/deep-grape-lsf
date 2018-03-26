@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/home/puranach/envs/grape-nf3/share/nextflow/assets/guigolab/grape-nf/bin/grape_infer_experiment.py", line 49, in <module>
-    from qcmodule import SAM
-ImportError: No module named qcmodule
