@@ -1,0 +1,10 @@
+Reading reference gene model annotation.bed ... Done
+Loading SAM/BAM file ...  Finished
+Total 1858 usable reads were sampled
+------ STATS ------
+Protocol: PairEnd
+Fraction of reads explained by "1++,1--,2+-,2-+": 0.0129
+Fraction of reads explained by "1+-,1-+,2++,2--": 0.9758
+Fraction of reads explained by other combinations: 0.0113
+-------------------
+MATE2_SENSE

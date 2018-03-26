@@ -1,0 +1,9 @@
+task_id	hash	native_id	name	status	exit	submit	duration	realtime	%cpu	rss	vmem	rchar	wchar
+1	06/36c5e2	10607	fastaIndex (genome-SAMtools-0.1.19)	COMPLETED	0	2018-03-26 16:08:12.717	232ms	161ms	-	-	-	-	-
+3	e9/cac669	10598	t_index (genome-RSEM-1.2.21)	COMPLETED	0	2018-03-26 16:08:12.677	746ms	525ms	0.0%	1.4 MB	12.8 MB	12.2 KB	0
+2	e1/9581fc	10620	index (genome-STAR-2.4.0j)	COMPLETED	0	2018-03-26 16:08:12.735	28.4s	27.6s	96.2%	2.7 GB	2.7 GB	26.9 MB	1.5 GB
+4	a8/121b6c	11367	mapping (test1-STAR-2.4.0j)	COMPLETED	0	2018-03-26 16:08:41.235	3.7s	3.6s	98.1%	765.3 MB	1.5 GB	13.9 MB	79.7 KB
+5	5a/a1bbbf	11880	inferExp (test1-RSeQC-2.3.9)	COMPLETED	0	2018-03-26 16:08:45.045	1.1s	890ms	326.0%	13.8 MB	1.3 GB	2.1 MB	101.1 KB
+8	ad/88023d	12109	bigwig (test1-STAR-2.4.0j)	COMPLETED	0	2018-03-26 16:08:46.446	496ms	340ms	0.0%	1.5 MB	12.8 MB	13.7 KB	0
+7	c1/f6ef78	12099	contig (test1-RGCRG-0.1)	COMPLETED	0	2018-03-26 16:08:46.429	1.1s	853ms	0.0%	1.5 MB	12.8 MB	2.7 MB	2.9 MB
+6	da/9211ae	12095	quantification (test1-RSEM-1.2.21)	FAILED	127	2018-03-26 16:08:46.411	12s	11.9s	117.7%	77.4 MB	208.1 MB	72.2 MB	64 MB

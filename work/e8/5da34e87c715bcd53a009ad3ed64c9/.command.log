@@ -1,0 +1,3 @@
+Mar 26 16:00:43 ..... Reading from BAM, output wiggle
+Mar 26 16:00:43 ..... Done
+/abi/data/puranach/packages/test_grapenf3/work/e8/5da34e87c715bcd53a009ad3ed64c9/.command.stub: line 99: 26803 Terminated              nxf_trace "$pid" .command.trace

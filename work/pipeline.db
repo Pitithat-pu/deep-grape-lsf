@@ -1,0 +1,7 @@
+sample1	test1	/abi/data/puranach/packages/test_grapenf3/work/work/a8/121b6c7c3a726ff0ee2a79a691d5be/test1_m4_n10_toTranscriptome.bam	bam	TranscriptomeAlignments	Paired-End	MATE2_SENSE
+sample1	test1	/abi/data/puranach/packages/test_grapenf3/work/work/c1/f6ef78982f8b245754a75e26241276/sample1.contigs.bed	bed	Contigs	Paired-End	MATE2_SENSE
+sample1	test1	/abi/data/puranach/packages/test_grapenf3/work/work/ad/88023da110249c9dbc476b4c1ce9d2/sample1.UniqueMultiple.minusRaw.bw	bigWig	MultipleMinusRawSignal	Paired-End	MATE2_SENSE
+sample1	test1	/abi/data/puranach/packages/test_grapenf3/work/work/a8/121b6c7c3a726ff0ee2a79a691d5be/test1_m4_n10_toGenome.bam	bam	GenomeAlignments	Paired-End	MATE2_SENSE
+sample1	test1	/abi/data/puranach/packages/test_grapenf3/work/work/ad/88023da110249c9dbc476b4c1ce9d2/sample1.Unique.plusRaw.bw	bigWig	PlusRawSignal	Paired-End	MATE2_SENSE
+sample1	test1	/abi/data/puranach/packages/test_grapenf3/work/work/ad/88023da110249c9dbc476b4c1ce9d2/sample1.UniqueMultiple.plusRaw.bw	bigWig	MultiplePlusRawSignal	Paired-End	MATE2_SENSE
+sample1	test1	/abi/data/puranach/packages/test_grapenf3/work/work/ad/88023da110249c9dbc476b4c1ce9d2/sample1.Unique.minusRaw.bw	bigWig	MinusRawSignal	Paired-End	MATE2_SENSE

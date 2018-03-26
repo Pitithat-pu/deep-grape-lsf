@@ -1,0 +1,19 @@
+rsem-extract-reference-transcripts txDir/RSEMref 0 annotation.gtf 0 genome.fa
+Parsing gtf File is done!
+genome.fa is processed!
+319 transcripts are extracted and 0 transcripts are omitted.
+Extracting sequences is done!
+Group File is generated!
+Transcript Information File is generated!
+Chromosome List File is generated!
+Extracted Sequences File is generated!
+
+rsem-preref txDir/RSEMref.transcripts.fa 1 txDir/RSEMref -l 125
+Refs.makeRefs finished!
+Refs.saveRefs finished!
+txDir/RSEMref.idx.fa is generated!
+txDir/RSEMref.n2g.idx.fa is generated!
+
+Signal 15 (TERM) caught by ps (procps-ng version 3.3.8).
+ps:display.c:66: please report this bug
+/abi/data/puranach/packages/test_grapenf3/work/48/425b8c0f1d77c23c9c37a93045f7d8/.command.stub: line 99: 25561 Terminated              nxf_trace "$pid" .command.trace

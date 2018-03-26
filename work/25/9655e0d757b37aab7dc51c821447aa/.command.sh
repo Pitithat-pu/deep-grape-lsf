@@ -1,0 +1,4 @@
+#!/bin/bash -eu
+STAR --runThreadN 1      --genomeDir genomeDir      --readFilesIn test1_1.fastq.gz test1_2.fastq.gz      --outSAMunmapped Within      --outFilterType BySJout      --outSAMattributes NH HI AS NM MD      --outFilterMultimapNmax 10      --outFilterMismatchNmax 999      --outFilterMismatchNoverReadLmax 0.04      --alignIntronMin 20      --alignIntronMax 1000000      --alignMatesGapMax 1000000      --alignSJoverhangMin 8      --alignSJDBoverhangMin 1      --readFilesCommand pigz -p1 -dc      --outSAMtype BAM Unsorted      --outStd BAM_Unsorted      --quantMode TranscriptomeSAM      --outSAMattrRGline ID:test1 PU:test1 SM:sample1 | samtools sort -@ 0.5                 -m 536870912                 -                 test1_m4_n10_toGenome
+mv Aligned.toTranscriptome.out.bam test1_m4_n10_toTranscriptome.bam
+samtools index test1_m4_n10_toGenome.bam
