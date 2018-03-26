@@ -1,0 +1,12 @@
+Reading reference gene model annotation.bed ... Done
+Loading SAM/BAM file ...  Finished
+Total 1858 usable reads were sampled
+------ STATS ------
+Protocol: PairEnd
+Fraction of reads explained by "1++,1--,2+-,2-+": 0.0129
+Fraction of reads explained by "1+-,1-+,2++,2--": 0.9758
+Fraction of reads explained by other combinations: 0.0113
+-------------------
+MATE2_SENSESignal 15 (TERM) caught by ps (procps-ng version 3.3.8).
+ps:display.c:66: please report this bug
+/abi/data/puranach/packages/test_grape/work/be/aedb4b0d6767761ca0ecea488fb832/.command.stub: line 99: 29338 Terminated              nxf_trace "$pid" .command.trace
