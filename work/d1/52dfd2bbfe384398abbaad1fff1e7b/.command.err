@@ -1,3 +1,0 @@
-Signal 15 (TERM) caught by ps (procps-ng version 3.3.8).
-ps:display.c:66: please report this bug
-/abi/data/puranach/packages/test_grape/work/d1/52dfd2bbfe384398abbaad1fff1e7b/.command.stub: line 99: 28469 Terminated              nxf_trace "$pid" .command.trace
