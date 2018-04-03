@@ -1,0 +1,162 @@
+Mar-26 13:59:54.708 [main] DEBUG nextflow.cli.Launcher - Setting http proxy: [tbi-pbs, 3128]
+Mar-26 13:59:54.785 [main] DEBUG nextflow.cli.Launcher - Setting https proxy: [tbi-pbs, 3128]
+Mar-26 13:59:54.785 [main] DEBUG nextflow.cli.Launcher - $> /home/puranach/envs/grape-nf3/bin/nextflow run -without-docker -w work grape-nf --index /home/puranach/envs/grape-nf3/share/nextflow/assets/guigolab/grape-nf/test-index.txt --genome /home/puranach/envs/grape-nf3/share/nextflow/assets/guigolab/grape-nf/data/genome.fa --annotation /home/puranach/envs/grape-nf3/share/nextflow/assets/guigolab/grape-nf/data/annotation.gtf
+Mar-26 13:59:54.882 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 0.28.0
+Mar-26 13:59:55.044 [main] DEBUG nextflow.scm.AssetManager - Listing projects in folder: /home/puranach/envs/grape-nf3/share/nextflow/assets
+Mar-26 13:59:55.659 [main] DEBUG nextflow.scm.AssetManager - Git config: /home/puranach/envs/grape-nf3/share/nextflow/assets/guigolab/grape-nf/.git/config; branch: master; remote: origin; url: https://github.com/guigolab/grape-nf.git
+Mar-26 13:59:55.833 [main] DEBUG nextflow.scm.AssetManager - Git config: /home/puranach/envs/grape-nf3/share/nextflow/assets/guigolab/grape-nf/.git/config; branch: master; remote: origin; url: https://github.com/guigolab/grape-nf.git
+Mar-26 13:59:56.408 [main] DEBUG nextflow.scm.AssetManager - Git config: /home/puranach/envs/grape-nf3/share/nextflow/assets/guigolab/grape-nf/.git/config; branch: master; remote: origin; url: https://github.com/guigolab/grape-nf.git
+Mar-26 13:59:56.408 [main] INFO  nextflow.cli.CmdRun - Launching `guigolab/grape-nf` [intergalactic_saha] - revision: 75ffd8da0a [master]
+Mar-26 13:59:57.525 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /home/puranach/envs/grape-nf3/share/nextflow/assets/guigolab/grape-nf/nextflow.config
+Mar-26 13:59:57.530 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/puranach/envs/grape-nf3/share/nextflow/assets/guigolab/grape-nf/nextflow.config
+Mar-26 13:59:57.543 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Mar-26 13:59:58.114 [main] DEBUG nextflow.config.ConfigBuilder - Disabling execution in Docker contained as requested by cli option `-without-docker`
+Mar-26 13:59:58.148 [main] DEBUG nextflow.Session - Session uuid: f842556c-d4d7-40bd-8517-d2c2aecfb3a1
+Mar-26 13:59:58.148 [main] DEBUG nextflow.Session - Run name: intergalactic_saha
+Mar-26 13:59:58.149 [main] DEBUG nextflow.Session - Executor pool size: 32
+Mar-26 13:59:58.172 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 0.28.0 build 4779
+  Modified: 10-03-2018 12:13 UTC (13:13 CEST)
+  System: Linux 3.12.62-55-default
+  Runtime: Groovy 2.4.13 on Java HotSpot(TM) 64-Bit Server VM 1.8.0_161-b12
+  Encoding: UTF-8 (UTF-8)
+  Process: 21115@tbi-worker [193.174.51.240]
+  CPUs: 32 - Mem: 252.5 GB (7.7 GB) - Swap: 32 GB (8.3 GB)
+Mar-26 13:59:58.208 [main] DEBUG nextflow.Session - Work-dir: /abi/data/puranach/packages/test_grapenf3/work [nfs]
+Mar-26 13:59:58.438 [main] DEBUG nextflow.Session - Session start invoked
+Mar-26 13:59:58.445 [main] DEBUG nextflow.processor.TaskDispatcher - Dispatcher > start
+Mar-26 13:59:58.446 [main] DEBUG nextflow.trace.TraceFileObserver - Flow starting -- trace file: /abi/data/puranach/packages/test_grapenf3/trace.txt
+Mar-26 13:59:58.451 [main] DEBUG nextflow.script.ScriptRunner - > Script parsing
+Mar-26 13:59:58.500 [main] DEBUG nextflow.script.ScriptRunner - Unable to resolve dynamic `container` directive -- cause: No signature of method: groovy.util.ConfigObject.toLowerCase() is applicable for argument types: () values: []
+Mar-26 13:59:58.506 [main] DEBUG nextflow.script.ScriptRunner - Unable to resolve dynamic `container` directive -- cause: No signature of method: groovy.util.ConfigObject.toLowerCase() is applicable for argument types: () values: []
+Mar-26 13:59:58.512 [main] DEBUG nextflow.script.ScriptRunner - Unable to resolve dynamic `container` directive -- cause: No signature of method: groovy.util.ConfigObject.toLowerCase() is applicable for argument types: () values: []
+Mar-26 13:59:58.517 [main] DEBUG nextflow.script.ScriptRunner - Unable to resolve dynamic `container` directive -- cause: No signature of method: groovy.util.ConfigObject.toLowerCase() is applicable for argument types: () values: []
+Mar-26 13:59:59.087 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Mar-26 13:59:59.119 [main] INFO  nextflow.Nextflow - 
+Mar-26 13:59:59.119 [main] INFO  nextflow.Nextflow - G R A P E ~ RNA-seq Pipeline
+Mar-26 13:59:59.120 [main] INFO  nextflow.Nextflow - 
+Mar-26 13:59:59.120 [main] INFO  nextflow.Nextflow - General parameters
+Mar-26 13:59:59.120 [main] INFO  nextflow.Nextflow - ------------------
+Mar-26 13:59:59.120 [main] INFO  nextflow.Nextflow - Index file                      : /home/puranach/envs/grape-nf3/share/nextflow/assets/guigolab/grape-nf/test-index.txt
+Mar-26 13:59:59.120 [main] INFO  nextflow.Nextflow - Genome                          : /home/puranach/envs/grape-nf3/share/nextflow/assets/guigolab/grape-nf/data/genome.fa
+Mar-26 13:59:59.121 [main] INFO  nextflow.Nextflow - Annotation                      : /home/puranach/envs/grape-nf3/share/nextflow/assets/guigolab/grape-nf/data/annotation.gtf
+Mar-26 13:59:59.121 [main] INFO  nextflow.Nextflow - Pipeline steps                  : mapping bigwig contig quantification
+Mar-26 13:59:59.121 [main] INFO  nextflow.Nextflow - 
+Mar-26 13:59:59.121 [main] INFO  nextflow.Nextflow - Mapping parameters
+Mar-26 13:59:59.121 [main] INFO  nextflow.Nextflow - ------------------
+Mar-26 13:59:59.121 [main] INFO  nextflow.Nextflow - Tool                            : STAR 2.4.0j
+Mar-26 13:59:59.122 [main] INFO  nextflow.Nextflow - Max mismatches                  : 4
+Mar-26 13:59:59.122 [main] INFO  nextflow.Nextflow - Max multimaps                   : 10
+Mar-26 13:59:59.122 [main] INFO  nextflow.Nextflow - 
+Mar-26 13:59:59.122 [main] INFO  nextflow.Nextflow - Bigwig parameters
+Mar-26 13:59:59.122 [main] INFO  nextflow.Nextflow - -----------------
+Mar-26 13:59:59.123 [main] INFO  nextflow.Nextflow - Tool                            : STAR 2.4.0j
+Mar-26 13:59:59.123 [main] INFO  nextflow.Nextflow - References prefix               : chr
+Mar-26 13:59:59.123 [main] INFO  nextflow.Nextflow - 
+Mar-26 13:59:59.124 [main] INFO  nextflow.Nextflow - Quantification parameters
+Mar-26 13:59:59.124 [main] INFO  nextflow.Nextflow - -------------------------
+Mar-26 13:59:59.124 [main] INFO  nextflow.Nextflow - Tool                            : RSEM 1.2.21
+Mar-26 13:59:59.124 [main] INFO  nextflow.Nextflow - Mode                            : Transcriptome
+Mar-26 13:59:59.124 [main] INFO  nextflow.Nextflow - 
+Mar-26 13:59:59.125 [main] INFO  nextflow.Nextflow - Execution information
+Mar-26 13:59:59.125 [main] INFO  nextflow.Nextflow - ---------------------
+Mar-26 13:59:59.125 [main] INFO  nextflow.Nextflow - Engine                          : local
+Mar-26 13:59:59.125 [main] INFO  nextflow.Nextflow - Use Docker                      : false
+Mar-26 13:59:59.126 [main] INFO  nextflow.Nextflow - Error strategy                  : ignore
+Mar-26 13:59:59.126 [main] INFO  nextflow.Nextflow - 
+Mar-26 13:59:59.291 [Actor Thread 2] INFO  nextflow.Nextflow - Dataset information
+Mar-26 13:59:59.292 [Actor Thread 2] INFO  nextflow.Nextflow - -------------------
+Mar-26 13:59:59.293 [Actor Thread 2] INFO  nextflow.Nextflow - Number of sequenced samples     : 1
+Mar-26 13:59:59.293 [Actor Thread 2] INFO  nextflow.Nextflow - Number of sequencing runs       : 1
+Mar-26 13:59:59.294 [Actor Thread 2] INFO  nextflow.Nextflow - Merging                         : none
+Mar-26 13:59:59.294 [Actor Thread 2] INFO  nextflow.Nextflow - 
+Mar-26 13:59:59.342 [main] INFO  nextflow.Nextflow - ===============
+Mar-26 13:59:59.343 [main] INFO  nextflow.Nextflow - Output files db -> /abi/data/puranach/packages/test_grapenf3/pipeline.db
+Mar-26 13:59:59.343 [main] INFO  nextflow.Nextflow - ===============
+Mar-26 13:59:59.343 [main] INFO  nextflow.Nextflow - 
+Mar-26 13:59:59.359 [Actor Thread 2] DEBUG nextflow.splitter.AbstractSplitter - Creating gzip splitter for: /home/puranach/envs/grape-nf3/share/nextflow/assets/guigolab/grape-nf/data/test1_1.fastq.gz
+Mar-26 13:59:59.491 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Mar-26 13:59:59.492 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Mar-26 13:59:59.502 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Mar-26 13:59:59.506 [main] INFO  nextflow.executor.Executor - [warm up] executor > local
+Mar-26 13:59:59.513 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=32; memory=252.5 GB; capacity=32; pollInterval=100ms; dumpInterval=5m
+Mar-26 13:59:59.519 [main] DEBUG nextflow.processor.TaskDispatcher - Starting monitor: LocalPollingMonitor
+Mar-26 13:59:59.520 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Mar-26 13:59:59.524 [main] DEBUG nextflow.executor.Executor - Invoke register for executor: local
+Mar-26 13:59:59.566 [main] DEBUG nextflow.Session - >>> barrier register (process: fastaIndex)
+Mar-26 13:59:59.569 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > fastaIndex -- maxForks: 32
+Mar-26 13:59:59.608 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Mar-26 13:59:59.609 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Mar-26 13:59:59.609 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Mar-26 13:59:59.611 [main] DEBUG nextflow.Session - >>> barrier register (process: index)
+Mar-26 13:59:59.611 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > index -- maxForks: 32
+Mar-26 13:59:59.632 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Mar-26 13:59:59.632 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Mar-26 13:59:59.633 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Mar-26 13:59:59.634 [main] DEBUG nextflow.Session - >>> barrier register (process: mapping)
+Mar-26 13:59:59.635 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > mapping -- maxForks: 32
+Mar-26 13:59:59.646 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Mar-26 13:59:59.646 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Mar-26 13:59:59.647 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Mar-26 13:59:59.649 [main] DEBUG nextflow.Session - >>> barrier register (process: t_index)
+Mar-26 13:59:59.649 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > t_index -- maxForks: 32
+Mar-26 13:59:59.682 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Mar-26 13:59:59.683 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Mar-26 13:59:59.683 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Mar-26 13:59:59.686 [main] DEBUG nextflow.Session - >>> barrier register (process: mergeBam)
+Mar-26 13:59:59.686 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > mergeBam -- maxForks: 32
+Mar-26 13:59:59.725 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Mar-26 13:59:59.725 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Mar-26 13:59:59.726 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Mar-26 13:59:59.728 [main] DEBUG nextflow.Session - >>> barrier register (process: inferExp)
+Mar-26 13:59:59.729 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > inferExp -- maxForks: 32
+Mar-26 13:59:59.762 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Mar-26 13:59:59.762 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Mar-26 13:59:59.764 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Mar-26 13:59:59.766 [main] DEBUG nextflow.Session - >>> barrier register (process: bigwig)
+Mar-26 13:59:59.766 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > bigwig -- maxForks: 32
+Mar-26 13:59:59.783 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Mar-26 13:59:59.784 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Mar-26 13:59:59.784 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Mar-26 13:59:59.786 [main] DEBUG nextflow.Session - >>> barrier register (process: contig)
+Mar-26 13:59:59.787 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > contig -- maxForks: 32
+Mar-26 13:59:59.797 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Mar-26 13:59:59.797 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Mar-26 13:59:59.797 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Mar-26 13:59:59.798 [main] DEBUG nextflow.Session - >>> barrier register (process: quantification)
+Mar-26 13:59:59.799 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > quantification -- maxForks: 32
+Mar-26 13:59:59.829 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+Mar-26 13:59:59.829 [main] DEBUG nextflow.Session - Session await
+Mar-26 13:59:59.959 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-26 13:59:59.970 [Task submitter] INFO  nextflow.Session - [c6/f5ed37] Submitted process > fastaIndex (genome-SAMtools-0.1.19)
+Mar-26 14:00:00.018 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-26 14:00:00.019 [Task submitter] INFO  nextflow.Session - [bb/45cd01] Submitted process > t_index (genome-RSEM-1.2.21)
+Mar-26 14:00:00.038 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-26 14:00:00.039 [Task submitter] INFO  nextflow.Session - [a7/41f506] Submitted process > index (genome-STAR-2.4.0j)
+Mar-26 14:00:00.317 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: fastaIndex (genome-SAMtools-0.1.19); status: COMPLETED; exit: 0; error: -; workDir: /abi/data/puranach/packages/test_grapenf3/work/c6/f5ed37f41a30a2bbe847de6a25bc10]
+Mar-26 14:00:00.345 [Actor Thread 1] DEBUG nextflow.Session - <<< barrier arrive (process: fastaIndex)
+Mar-26 14:00:01.030 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: t_index (genome-RSEM-1.2.21); status: COMPLETED; exit: 0; error: -; workDir: /abi/data/puranach/packages/test_grapenf3/work/bb/45cd01a9e4d89b5d702988293084b4]
+Mar-26 14:00:01.035 [Actor Thread 1] DEBUG nextflow.Session - <<< barrier arrive (process: t_index)
+Mar-26 14:00:28.771 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: index (genome-STAR-2.4.0j); status: COMPLETED; exit: 0; error: -; workDir: /abi/data/puranach/packages/test_grapenf3/work/a7/41f5068b04158e63e565c96c2aeafe]
+Mar-26 14:00:28.774 [Actor Thread 6] DEBUG nextflow.Session - <<< barrier arrive (process: index)
+Mar-26 14:00:28.932 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-26 14:00:28.933 [Task submitter] INFO  nextflow.Session - [cf/96026e] Submitted process > mapping (test1-STAR-2.4.0j)
+Mar-26 14:00:32.749 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: mapping (test1-STAR-2.4.0j); status: COMPLETED; exit: 0; error: -; workDir: /abi/data/puranach/packages/test_grapenf3/work/cf/96026e7bf65c94dadb4960c2fe4989]
+Mar-26 14:00:32.773 [Actor Thread 6] DEBUG nextflow.Session - <<< barrier arrive (process: mapping)
+Mar-26 14:00:32.799 [Actor Thread 6] DEBUG nextflow.Session - <<< barrier arrive (process: mergeBam)
+Mar-26 14:00:32.857 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-26 14:00:32.859 [Task submitter] INFO  nextflow.Session - [6a/23fd6f] Submitted process > inferExp (test1-RSeQC-2.3.9)
+Mar-26 14:00:33.436 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 5; name: inferExp (test1-RSeQC-2.3.9); status: COMPLETED; exit: 1; error: -; workDir: /abi/data/puranach/packages/test_grapenf3/work/6a/23fd6f3910569e42eab63da373a181]
+Mar-26 14:00:33.447 [Task monitor] INFO  nextflow.processor.TaskProcessor - [6a/23fd6f] NOTE: Process `inferExp (test1-RSeQC-2.3.9)` terminated with an error exit status (1) -- Error is ignored
+Mar-26 14:00:33.450 [Actor Thread 12] DEBUG nextflow.Session - <<< barrier arrive (process: inferExp)
+Mar-26 14:00:33.455 [Actor Thread 16] DEBUG nextflow.Session - <<< barrier arrive (process: contig)
+Mar-26 14:00:33.455 [Actor Thread 17] DEBUG nextflow.Session - <<< barrier arrive (process: bigwig)
+Mar-26 14:00:33.456 [Actor Thread 18] DEBUG nextflow.Session - <<< barrier arrive (process: quantification)
+Mar-26 14:00:33.456 [main] DEBUG nextflow.Session - Session await > all process finished
+Mar-26 14:00:33.461 [Actor Thread 5] DEBUG nextflow.file.SortFileCollector - FileCollector temp dir not removed: null
+Mar-26 14:00:33.533 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local)
+Mar-26 14:00:33.534 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Mar-26 14:00:33.551 [main] DEBUG nextflow.trace.StatsObserver - Workflow completed > WorkflowStats[succeedCount=4; failedCount=0; ignoredCount=1; cachedCount=0; succeedDuration=33.2s; failedDuration=298ms; cachedDuration=0ms]
+Mar-26 14:00:33.551 [main] DEBUG nextflow.trace.TraceFileObserver - Flow completing -- flushing trace file
+Mar-26 14:00:33.581 [main] DEBUG nextflow.CacheDB - Closing CacheDB done
+Mar-26 14:00:33.599 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

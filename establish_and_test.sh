@@ -3,6 +3,8 @@ samtools=1.2.rglab rsem=1.2.21 rseqc=2.6.4 \
 bedtools=2.19.1 bamtools=2.3.0 \
 ucsc-bedgraphtobigwig=357 ucsc-genepredtobed=357 ucsc-gtftogenepred=357 nextflow
 
+conda install --override-channels -c conda-forge bzip2
+
 source activate grape-nf3
 nextflow pull guigolab/grape-nf
 
