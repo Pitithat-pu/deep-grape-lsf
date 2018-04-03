@@ -14,7 +14,7 @@ nextflow run -without-docker -w work grape-nf --index /home/puranach/envs/grape-
 --genome /home/puranach/envs/grape-nf3/share/nextflow/assets/guigolab/grape-nf/data/genome.fa \
 --annotation /home/puranach/envs/grape-nf3/share/nextflow/assets/guigolab/grape-nf/data/annotation.gtf
 
-N E X T F L O W  ~  version 0.28.0
+##N E X T F L O W  ~  version 0.28.0
 ##Launching `guigolab/grape-nf` [grave_dubinsky] - revision: 75ffd8da0a [master]
 ##
 ##G R A P E ~ RNA-seq Pipeline
