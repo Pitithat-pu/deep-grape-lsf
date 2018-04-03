@@ -6,15 +6,14 @@ ucsc-bedgraphtobigwig=357 ucsc-genepredtobed=357 ucsc-gtftogenepred=357 nextflow
 source activate grape-nf3
 nextflow pull guigolab/grape-nf
 
-unset $PYTHONHOME
+unset PYTHONHOME
 
 nextflow run -without-docker -w work grape-nf --index /home/puranach/envs/grape-nf3/share/nextflow/assets/guigolab/grape-nf/test-index.txt \
 --genome /home/puranach/envs/grape-nf3/share/nextflow/assets/guigolab/grape-nf/data/genome.fa \
 --annotation /home/puranach/envs/grape-nf3/share/nextflow/assets/guigolab/grape-nf/data/annotation.gtf
 
-N E X T F L O W  ~  version 0.28.0
+#N E X T F L O W  ~  version 0.28.0
 
-N E X T F L O W  ~  version 0.28.0
 ##Launching `guigolab/grape-nf` [zen_edison] - revision: 75ffd8da0a [master]
 ##
 ##G R A P E ~ RNA-seq Pipeline
