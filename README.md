@@ -45,7 +45,10 @@ Installation
 3. Build reference genome index for STAR alignment
    1. Create/edit configuration file with parameters as shown in config_hg10.ini
    2. Execute STAR_index_generation.sh with the configuration file.
-       ./STAR_index_generation.sh config_mm10.ini
+         ```
+         ./STAR_index_generation.sh config_mm10.ini
+         ```
+   
 
 
 Instruction
