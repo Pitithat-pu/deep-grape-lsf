@@ -1,6 +1,6 @@
 # deep-grape
 
-Tested in DKFZ Cluster environment on 17 May 2018
+Tested inside DKFZ Cluster environment on 12 May 2018
 ### Prerequisite
 1. Python 2.7.9 (module load python/2.7.9 in dkfz_cluster)
 2. conda (included when module load python/2.7.9 in dkfz_cluster)
