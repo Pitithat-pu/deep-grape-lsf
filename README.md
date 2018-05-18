@@ -1,16 +1,15 @@
 # deep-grape
 
 Tested in DKFZ Cluster environment on 17 May 2018
-Prerequisite
+### Prerequisite
 1. Python 2.7.9 (module load python/2.7.9 in dkfz_cluster)
 2. conda (included when module load python/2.7.9 in dkfz_cluster)
 3. TrimGalore
 4. cutadapt (TrimGalore prerequisite)
 
 
-Installation
-1. Brief installation instruction are contained in establish_and_test.sh. Please module load python/2.7.9 before running the     
-   script
+### Installation
+1. Brief installation instruction are contained in establish_and_test.sh. Please module load python/2.7.9 before running the script
 2. In detail 
    
    2.0 In DKFZ cluster environment
@@ -51,7 +50,7 @@ Installation
    
 
 
-Instruction
+### Instruction
 1. In DEEP_metadata.csv, write down information about the input data (e.g.datatype, sampleID) in tab-separated format. 
 2. Run script to start.
    ```./ihec.rna-seq.processing/call_rna_seq_processing.sh DEEP_metadata.csv``` 
