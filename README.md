@@ -52,6 +52,12 @@ Tested inside DKFZ Cluster environment on 12 May 2018
 
 ### Instruction
 1. In DEEP_metadata.csv, write down information about the input data (e.g.datatype, sampleID) in tab-separated format. 
+   ```
+      DeepFolder      datatype        sampleID        replicate       runID
+/icgc/dkfzlsdf/project/DEEP/sequencing/ strand_specific_mrna_sequencing 41_Mm10_LiNP_OC replicate1      run140910_SN778_0210_AC533DACXX
+ 
+   ```
+
 2. Run script to start.
    ```./ihec.rna-seq.processing/call_rna_seq_processing.sh DEEP_metadata.csv``` 
 
