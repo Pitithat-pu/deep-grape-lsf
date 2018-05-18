@@ -42,7 +42,7 @@ Tested inside DKFZ Cluster environment on 12 May 2018
        --annotation ~/.nextflow/assets/guigolab/grape-nf/data/annotation.gtf
 
 ### Build reference genome index for STAR alignment
-   1. Create/edit configuration file with parameters as shown in config_hg10.ini
+   1. Inside reference_genome directory, create/edit configuration file with parameters as shown in config_hg10.ini
    2. Execute STAR_index_generation.sh with the configuration file.
          ```
          ./STAR_index_generation.sh config_mm10.ini
