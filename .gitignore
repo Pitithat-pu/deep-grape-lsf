@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 DEEP_metadata_bak.csv
-reference_genome/*
+reference_genome/mm10
+reference_genome/hg19
 =======
 genomeDir
 *.fastq.gz
