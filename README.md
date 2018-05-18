@@ -9,7 +9,7 @@ Tested in DKFZ Cluster environment on 17 May 2018
 
 
 ### Installation
-1. Brief installation instruction are contained in establish_and_test.sh. Please module load python/2.7.9 before running the script
+1. Brief installation instruction are contained in establish_and_test.sh. Please ```module load python/2.7.9``` before running the script
 2. In detail 
    
    2.0 In DKFZ cluster environment
