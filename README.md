@@ -15,22 +15,26 @@ Installation
         module load python/2.7.9
 
    2.1 install and configure bioconda (https://bioconda.github.io)
+   
         conda config --add channels defaults
         conda config --add channels conda-forge
         conda config --add channels bioconda
 
    2.2 create working environment grape-nf3
+   
        conda create -n grape-nf3 star=2.4.0j \
          samtools=1.2.rglab rsem=1.2.21 rseqc=2.6.4 \
          bedtools=2.19.1 bamtools=2.3.0 \
          ucsc-bedgraphtobigwig=357 ucsc-genepredtobed=357 ucsc-gtftogenepred=357 nextflow
 
    2.3 activate the environment
+   
        conda activate grape-nf3
        nextflow pull guigolab/grape-nf
        unset PYTHONHOME  ## unset PYTHONHOME given by the module load python
 
    2.4 test if the setup is right
+   
        nextflow run -without-docker -w work grape-nf --index \
        ~/.nextflow/assets/guigolab/grape-nf/test-index.txt \
        --genome ~/.nextflow/assets/guigolab/grape-nf/data/genome.fa \
