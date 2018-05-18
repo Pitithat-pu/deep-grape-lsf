@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 module load python/2.7.9 # becuase it seem TrimGalore/cutadapy depends on this version of python, higher veresion reports error
-=======
-#module load python/2.7.9 # becuase it seem TrimGalore/cutadapy depends on this version of python, higher veresion reports error
->>>>>>> f0c369ca52b9f6ac616f9a5cce1486536faaabcb
 
 name="trim_galore_array.sh"
 trim_galore="trim_galore "
