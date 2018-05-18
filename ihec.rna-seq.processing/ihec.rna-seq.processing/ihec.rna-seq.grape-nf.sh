@@ -2,12 +2,20 @@
 #$ -S /bin/bash
 #$ -V
 #$ -j y
+<<<<<<< HEAD
 #$ -l mem_free=200G
 #$ -l h_vmem=200G
 #$ -l walltime=72:00:00
 #module load python/2.7.9; 
 source activate grape-nf3
 unset PYTHONHOME
+=======
+#$ -l mem_free=67G
+#$ -l h_vmem=67G
+
+source activate grape-nf3
+
+>>>>>>> f0c369ca52b9f6ac616f9a5cce1486536faaabcb
 #grapeInstallation=$1
 sampleName=$1
 TMPWD=$2
@@ -48,7 +56,11 @@ popd &> /dev/null
 
 #sampleID fileID path "fastq" "FqRd{"",1,2}"
 find $trimmedFolder -name "*.fq.gz" \
+<<<<<<< HEAD
   | sed -e 's/\(.*\)\/\(.*_[ATGCN]\{4,12\}_L00[0-9]\)_R\([12]\)_\([0-9]\{3\}\|\(complete_filtered\)\)_\(.*\).fq.gz/\5 \2_\4 \0 fastq FqRd\3/g' \
+=======
+  | sed -e 's/\(.*\)\/\(.*_[ATGCN]\{4,12\}_L00[0-9]\)_R\([12]\)_\([0-9]\{3\}\)_\(.*\).fq.gz/\5 \2_\4 \0 fastq FqRd\3/g' \
+>>>>>>> f0c369ca52b9f6ac616f9a5cce1486536faaabcb
   | awk -v name=$sampleName -v folder=$trimmedFolder '
       $1~/trimmed/ {$5="FqRd"}
       {

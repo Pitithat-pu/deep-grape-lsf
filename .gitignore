@@ -1,2 +1,8 @@
+<<<<<<< HEAD
 DEEP_metadata_bak.csv
 reference_genome/*
+=======
+genomeDir
+*.fastq.gz
+*.fa
+>>>>>>> f0c369ca52b9f6ac616f9a5cce1486536faaabcb

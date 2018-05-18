@@ -49,8 +49,13 @@ while getopts "i:n:o:s:g:r:t:a:h" opt; do
           extraOptions="$extraOptions --wig-ref-prefix -" # reference genome doesn't have chr prefix
         ;;
         mm10)
+<<<<<<< HEAD
           genomeFasta=/abi/data/puranach/IHEC-Deep/reference_genome/mm10/GRCm38mm10.fa
           genomeIndex=/abi/data/puranach/IHEC-Deep/reference_genome/mm10
+=======
+          genomeFasta=/icgc/dkfzlsdf/dmg/otp/production/processing/reference_genomes/bwa06_GRCm38mm10/GRCm38mm10.fa
+          genomeIndex=/icgc/dkfzlsdf/analysis/G200/wangq/DEEP_reference/mm10/STAR2
+>>>>>>> f0c369ca52b9f6ac616f9a5cce1486536faaabcb
           transcriptAnnotation=/icgc/ngs_share/assemblies/mm10/databases/gencode/gencodeM12/gencode.vM12.annotation_plain.w_GeneTranscriptID_MT_v2.gtf
           extraOptions="$extraOptions --wig-ref-prefix -"  # reference genome doesn't have chr prefix
         ;;
@@ -98,10 +103,16 @@ echo "job_array_id=\`echo \" $trimScript $inputFolder $TMPWD/trimmed \"| qsub -N
 
 job_array_id=`echo " $trimScript $inputFolder $TMPWD/trimmed "| qsub -N trim.$(basename $TMPWD) -t 1-${N_lanes} -o $outputFolder/log/ | cut -d '.' -f 1`
 
+<<<<<<< HEAD
 
 echo "echo \"module load python/2.7.9; $grapeScript $sampleName $TMPWD $TMPWD/trimmed $genomeFasta $genomeIndex $transcriptAnnotation $outputFolder \"$extraOptions\" \" | qsub -l walltime=100:00:00,mem=200gb -q highmem -W depend=afterokarray:${job_array_id} -N grape.$(basename $TMPWD) -o $outputFolder/log/ " >> $outputFolder/jobs.sh
 
 echo "module load python/2.7.9; $grapeScript  $sampleName $TMPWD $TMPWD/trimmed $genomeFasta $genomeIndex $transcriptAnnotation $outputFolder $extraOptions" | qsub -l walltime=100:00:00,mem=200gb -q highmem -W depend=afterokarray:${job_array_id} -N grape.$(basename $TMPWD) -o $outputFolder/log/
+=======
+echo "echo \"$grapeScript $sampleName $TMPWD $TMPWD/trimmed $genomeFasta $genomeIndex $transcriptAnnotation $outputFolder \"$extraOptions\" \" | qsub -W depend=afterokarray:${job_array_id} -N grape.$(basename $TMPWD) -o $outputFolder/log/ " >> $outputFolder/jobs.sh
+
+echo "$grapeScript  $sampleName $TMPWD $TMPWD/trimmed $genomeFasta $genomeIndex $transcriptAnnotation $outputFolder $extraOptions" | qsub -l walltime=72:00:00,mem=200gb -q highmem -W depend=afterokarray:${job_array_id} -N grape.$(basename $TMPWD) -o $outputFolder/log/
+>>>>>>> f0c369ca52b9f6ac616f9a5cce1486536faaabcb
 
 
 #bash $outputFolder/jobs.sh
