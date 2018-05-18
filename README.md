@@ -42,6 +42,12 @@ Installation
        --genome ~/.nextflow/assets/guigolab/grape-nf/data/genome.fa \
        --annotation ~/.nextflow/assets/guigolab/grape-nf/data/annotation.gtf
 
+3. Build reference genome index for STAR alignment
+   1. Create/edit configuration file with parameters as shown in config_hg10.ini
+   2. Execute STAR_index_generation.sh with the configuration file.
+       ./STAR_index_generation.sh config_mm10.ini
+
+
 Instruction
 1. In DEEP_metadata.csv, write down information about the input data (e.g.datatype, sampleID) in tab-separated format. 
 2. Run script ./ihec.rna-seq.processing/call_rna_seq_processing.sh DEEP_metadata.csv to start.
