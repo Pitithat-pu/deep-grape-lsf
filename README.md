@@ -11,6 +11,7 @@ Prerequisite
 Installation
 1. Brief installation instruction are contained in establish_and_test.sh. Please module load python/2.7.9 before running the script
 2. In detail 
+   
    2.0 In DKFZ cluster environment
         module load python/2.7.9
 
