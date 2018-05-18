@@ -1,3 +1,7 @@
+conda config --add channels defaults
+conda config --add channels conda-forge
+conda config --add channels bioconda
+
 conda create -n grape-nf3 star=2.4.0j \
 samtools=1.2.rglab rsem=1.2.21 rseqc=2.6.4 \
 bedtools=2.19.1 bamtools=2.3.0 \
