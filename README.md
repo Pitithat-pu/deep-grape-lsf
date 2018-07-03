@@ -53,9 +53,9 @@ Tested inside DKFZ Cluster environment on 12 May 2018
 ### Instruction
 1. In DEEP_metadata.csv, write down information about the input data (e.g.datatype, sampleID) in tab-separated format. 
    ```
-      DeepFolder      datatype        sampleID        replicate       runID
-      /icgc/dkfzlsdf/project/DEEP/sequencing/ strand_specific_mrna_sequencing 41_Mm10_LiNP_OC replicate1      run140910_SN778_0210_AC533DACXX
-      /icgc/dkfzlsdf/project/DEEP/sequencing/ strand_specific_mrna_sequencing 41_Hf11_LiNP_St replicate1      run150303_D00699_0015_BC5Y3KACXX
+        DeepFolder      datatype        sampleID        replicate       refererence_Genome
+       /icgc/dkfzlsdf/project/DEEP/sequencing/ strand_specific_mrna_sequencing 41_Mm10_LiNP_OC replicate1
+      /icgc/dkfzlsdf/project/DEEP/sequencing/ strand_specific_mrna_sequencing 41_Hf11_LiNP_St replicate1
 
    ```
 
