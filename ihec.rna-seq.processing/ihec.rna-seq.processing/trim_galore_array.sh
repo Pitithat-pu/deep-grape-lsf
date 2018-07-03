@@ -2,7 +2,7 @@ module load python/2.7.9 # becuase it seem TrimGalore/cutadapy depends on this v
 
 name="trim_galore_array.sh"
 trim_galore="trim_galore "
-TEMP_DIR="/abi/data/puranach/packages/DEEP_test/temp"
+#TEMP_DIR="/abi/data/puranach/packages/DEEP_test/temp"
 
 clip5=0
 
@@ -20,7 +20,7 @@ then
  exit 1
 fi
 
-export TMPDIR=${TEMP_DIR}
+#export TMPDIR=${TEMP_DIR}
 
 # ls -lh $inputRoot
 
@@ -36,7 +36,7 @@ export TMPDIR=${TEMP_DIR}
 pushd $inputRoot /dev/null
 inputRoot=`pwd -P`
 
-file1=$( find . -name "*_R1_*q.gz" |sort|head -n ${PBS_ARRAYID}|tail -n 1 |sed -e 's#\./##' )
+file1=$( find . -name "*_R1*q.gz" |sort|head -n ${PBS_ARRAYID}|tail -n 1 |sed -e 's#\./##' )
 
 popd > /dev/null
 
@@ -55,12 +55,14 @@ mkdir -p $outputFolder
 #echo $outputFolder
 
 #is there a second file?
-file2=${file1/_R1_/_R2_}
+
+#file2=${file1/_R1_/_R2_}
+file2=`echo $file1 | sed -e 's/\(.*\)\(.*_[A-Za-z0-9]\{2,12\}\)_\(L0[0-9][0-9]\)_\(R1\)\(.*q.gz\)/\1\2_\3_R2\5 /g'`
 echo "is there a second file?"
 echo $inputRoot/$file1 $inputRoot/$file2
 
 #TODO: develop error handling
-if [ -f "$inputRoot/$file2" ]
+if [ -f $inputRoot/$file2 ]
 then
  echo "paired"
  if [[ $clip5 -gt 0 ]]; then

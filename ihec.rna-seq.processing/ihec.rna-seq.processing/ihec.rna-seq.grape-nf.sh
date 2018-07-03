@@ -21,22 +21,43 @@ extraOptions=$8
 #all fileIDs and file names must be unique ==> flatten folder structure
 # this construct will move everything in folders to the main folder
 
-pushd $trimmedFolder
-find . -mindepth 2 -name "*.fq.gz" \
-    | xargs -l dirname \
-    | sed -e "s/^.\///" \
-    | sort -u \
-    | while read folder; do
-        prefix=$(echo $folder | sed -e "s/\//_/g")
-        for s in $folder/*.fq.gz; do
-          if [[ -e ${prefix}_$(basename $s) ]]; then
-            #this should very rarely happen
-            mv $s $(mktemp -u ${prefix}_XXX_$(basename $s))
-          else
-            mv $s ${prefix}_$(basename $s)
-          fi
-        done
-      done
+#for RunID in $trimmedFolder/run*; do
+#        if [ -d "$RunID" ];then
+#		pushd $RunID
+#		find . -name "*.fq.gz" \
+#    			| xargs -l dirname \
+#    			| sed -e "s/^.\///" \
+#    			| sort -u \
+#    			| while read folder; do
+#        			prefix=$(echo $folder | sed -e "s/\//_/g")
+#        			for s in $folder/*.fq.gz; do
+#          				if [[ -e ${prefix}_$(basename $s) ]]; then
+#            				  #this should very rarely happen
+#            					mv $s $(mktemp -u ${prefix}_XXX_$(basename $s))
+#          				else
+#            					mv $s ${prefix}_$(basename $s)
+#					fi
+#        			done
+#      			done
+#	fi
+#done
+
+#pushd $trimmedFolder
+#find . -mindepth 2 -name "*.fq.gz" \
+#    | xargs -l dirname \
+#    | sed -e "s/^.\///" \
+#    | sort -u \
+#    | while read folder; do
+#        prefix=$(echo $folder | sed -e "s/\//_/g")
+#        for s in $folder/*.fq.gz; do
+#          if [[ -e ${prefix}_$(basename $s) ]]; then
+#            #this should very rarely happen
+#            mv $s $(mktemp -u ${prefix}_XXX_$(basename $s))
+#          else
+#            mv $s ${prefix}_$(basename $s)
+#          fi
+#        done
+#      done
   #remove folders? not necessary
 #  find . -maxdepth 1 -mindepth 1  -type d \
 #    | xargs rm -r
@@ -44,20 +65,67 @@ find . -mindepth 2 -name "*.fq.gz" \
 popd &> /dev/null
 
 
+
+
+### Concatenate fastq from multiple lane
+for RunID in $trimmedFolder/run*; do
+        if [ -d "$RunID" ];then
+                N_lanes=`find $RunID -name "*L0[0-9][0-9]_R1*q.gz" |wc -l`
+                if [[ $N_lanes -eq 1 ]];then
+                        continue ## This run is contained within one lane.
+                fi
+                newname_R1=$(find $RunID -name "*L0[0-9][0-9]_R1*q.gz" | head -n1 \
+                                | sed -e 's/\(.*\)\/\(.*_[A-Za-z0-9]\{2,12\}\)_\(L0[0-9][0-9]\)_\(.*\).fq.gz/\1\/\2\_MergedLanes\_\4\.fq.gz /g')
+                newname_R2=$(find $RunID -name "*L0[0-9][0-9]_R2*q.gz" | head -n1 \
+                                | sed -e 's/\(.*\)\/\(.*_[A-Za-z0-9]\{2,12\}\)_\(L0[0-9][0-9]\)_\(.*\).fq.gz/\1\/\2\_MergedLanes\_\4\.fq.gz /g')
+                echo "Concatenating fastq files"
+                zcat $RunID/*L0[0-9][0-9]_R1*q.gz | gzip > $newname_R1
+                zcat $RunID/*L0[0-9][0-9]_R2*q.gz | gzip > $newname_R2
+        fi
+done
+
+
 #generate input (index) file
+if [ -f $outputFolder/readIndex.tsv ] ; then
+    rm $outputFolder/readIndex.tsv
+fi
+
+for RunID in $trimmedFolder/run*; do
+        if [ -d "$RunID" ];then
+		N_Mergedfiles=`find $RunID -name "*_MergedLanes_*fq.gz" | wc -l`
+		if [[ $N_Mergedfiles -eq 2 ]]; then
+			lanetext="MergedLanes"
+		else
+			lanetext="L0[0-9][0-9]"
+  		fi 
+                find $RunID -name "*_$lanetext*.fq.gz" | sed -e 's/\(.*\)\/\(.*_[A-Za-z0-9]\{2,12\}_'${lanetext}'\)_R\([12]\)\(_[0-9]\{3\}\|_complete_filtered\|\)_\(.*\).fq.gz/\5 \2\4 \0 fastq FqRd\3/g' \
+  		     | awk -v name=$sampleName -v folder=$RunID '
+      			$1~/trimmed/ {$5="FqRd"}
+      			{
+        		  $1=name
+        		  NF=5
+        		  print
+      			}
+    		      '  | awk -v runid=$(basename $RunID) 'BEGIN{OFS="\t"} {print $1,runid,$3,$4,$5}'\
+                  >> $outputFolder/readIndex.tsv
+	
+	fi
+done
+
+
 
 #sampleID fileID path "fastq" "FqRd{"",1,2}"
-find $trimmedFolder -name "*.fq.gz" \
-  | sed -e 's/\(.*\)\/\(.*_[ATGCN]\{4,12\}_L00[0-9]\)_R\([12]\)_\([0-9]\{3\}\|\(complete_filtered\)\)_\(.*\).fq.gz/\5 \2_\4 \0 fastq FqRd\3/g' \
-  | awk -v name=$sampleName -v folder=$trimmedFolder '
-      $1~/trimmed/ {$5="FqRd"}
-      {
-        $1=name
-        NF=5
-        print
-      }
-    '  | awk 'BEGIN{OFS="\t"} {print $1,$2,$3,$4,$5}'\
-> $outputFolder/readIndex.tsv
+#find $trimmedFolder -name "*.fq.gz" \
+#  | sed -e 's/\(.*\)\/\(.*_[ATGCN]\{4,12\}_L00[0-9]\)_R\([12]\)_\([0-9]\{3\}\|complete_filtered\)_\(.*\).fq.gz/\5 \2_\4 \0 fastq FqRd\3/g' \
+#  | awk -v name=$sampleName -v folder=$trimmedFolder '
+#      $1~/trimmed/ {$5="FqRd"}
+#      {
+#        $1=name
+#        NF=5
+#        print
+#      }
+#    '  | awk 'BEGIN{OFS="\t"} {print $1,$2,$3,$4,$5}'\
+#> $outputFolder/readIndex.tsv
 
 
 

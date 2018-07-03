@@ -1,7 +1,7 @@
 set -e
 #referenceGenome=hg38 #set default referenceGenome
 #data_type=strand_specific_mrna_sequencing
-DIR=/abi/data/puranach/packages/DEEP_test
+DIR=/icgc/dkfzlsdf/analysis/G200/puranach/IHEC_DEEP
 #mkdir -p ${DIR}/${data_type}
 SCRIPT_DIR=/abi/data/puranach/IHEC-Deep/ihec.rna-seq.processing
 #sampleID=41_Mm10_LiNP_OC
@@ -18,22 +18,34 @@ sed 1d $1 | while IFS=$'\t' read -r -a metadata_table ; do
 	datatype="${metadata_table[1]}"
 	sampleID="${metadata_table[2]}"
 	replicate="${metadata_table[3]}"
-	runID="${metadata_table[4]}"
-	if [[ $(echo $sampleID | cut -f2 -d"_") = Hf* || $(echo $sampleID | cut -f2 -d"_") = Hm* ]] 
-	then
-        	referenceGenome="hs38"
-	else
-        	referenceGenome="mm10"
-	fi
-
-	input_fasta_folder=$deepfolder/${datatype}/view-by-pid/${sampleID}/${replicate}/paired/${runID}/sequence
+	referenceGenome="${metadata_table[4]}"
+	#runID="${metadata_table[4]}"
+	#referenceGenome="${metadata_table[5]}"
+	#if [[ $(echo $sampleID | cut -f2 -d"_") = Hf* || $(echo $sampleID | cut -f2 -d"_") = Hm* ]] 
+	#then
+        #	referenceGenome="hs38"
+	#else
+        #	referenceGenome="mm10"
+	#fi
+	input_fasta_folder=$deepfolder/${datatype}/view-by-pid/${sampleID}/${replicate}/paired/
 	sampleName=${sampleID}_${replicate}
-	mkdir -p ${DIR}/${data_type}
-	out_DIR=${DIR}/${data_type}/${sampleName}
+	mkdir -p ${DIR}/${datatype}
+	out_DIR=${DIR}/${datatype}/${sampleName}
 	mkdir -p ${out_DIR}
-	echo "${SCRIPT_DIR}/ihec.rna-seq.processing.sh -i ${input_fasta_folder} -n ${sampleName} -o ${out_DIR} -s ${referenceGenome}" 
+	echo "${SCRIPT_DIR}/ihec.rna-seq.processing.sh -i ${input_fasta_folder} -n ${sampleName} -o ${out_DIR} -s ${referenceGenome}"
 	sh ${SCRIPT_DIR}/ihec.rna-seq.processing.sh -i ${input_fasta_folder} -n ${sampleName} -o ${out_DIR} -s ${referenceGenome}
 
 done
+
+
+#	input_fasta_folder=$deepfolder/${datatype}/view-by-pid/${sampleID}/${replicate}/paired/${runID}/sequence
+#	sampleName=${sampleID}_${replicate}
+#	mkdir -p ${DIR}/${datatype}
+#	out_DIR=${DIR}/${datatype}/${sampleName}
+#	mkdir -p ${out_DIR}
+#	echo "${SCRIPT_DIR}/ihec.rna-seq.processing.sh -i ${input_fasta_folder} -n ${sampleName} -o ${out_DIR} -s ${referenceGenome}" 
+#	sh ${SCRIPT_DIR}/ihec.rna-seq.processing.sh -i ${input_fasta_folder} -n ${sampleName} -o ${out_DIR} -s ${referenceGenome}
+
+#done
 
 

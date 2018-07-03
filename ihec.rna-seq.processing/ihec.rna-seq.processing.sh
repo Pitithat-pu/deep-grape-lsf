@@ -4,7 +4,7 @@ wrapper_DIR=/abi/data/puranach/IHEC-Deep/ihec.rna-seq.processing/
 
 grapeScript=${wrapper_DIR}/ihec.rna-seq.processing/ihec.rna-seq.grape-nf.sh
 trimScript=${wrapper_DIR}/ihec.rna-seq.processing/trim_galore_array.sh
-TMPDIR=/abi/data/puranach/packages/DEEP_test/temp
+TMPDIR=/icgc/dkfzlsdf/analysis/G200/puranach/temp_IHEC_DEEP
 adapter=""
 extraOptions=""
 extraTrimOptions=""
@@ -43,15 +43,15 @@ while getopts "i:n:o:s:g:r:t:a:h" opt; do
     s)
       case "$OPTARG" in
         hs38)
-          genomeFasta=/icgc/dkfzlsdf/dmg/otp/production/processing/reference_genomes/bwa06_hg38_CGA_000001405.15-no_alt_analysis_set/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna
-          genomeIndex=/icgc/dkfzlsdf/analysis/G200/wangq/DEEP_reference/hg19/STAR2
-          transcriptAnnotation=/icgc/dkfzlsdf/analysis/G200/wangq/DEEP_reference/gencode.v22.annotation.201503031.gtf
+          genomeFasta=/icgc/dkfzlsdf/analysis/G200/puranach/IHEC_DEEP/reference_genome/hs38/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna
+          genomeIndex=/icgc/dkfzlsdf/analysis/G200/puranach/IHEC_DEEP/reference_genome/hs38
+          transcriptAnnotation=/icgc/dkfzlsdf/analysis/G200/puranach/IHEC_DEEP/reference_genome/hs38/annotation/gencode.v28.annotation.gtf
           extraOptions="$extraOptions --wig-ref-prefix -" # reference genome doesn't have chr prefix
         ;;
         mm10)
-          genomeFasta=/abi/data/puranach/IHEC-Deep/reference_genome/mm10/GRCm38mm10.fa
-          genomeIndex=/abi/data/puranach/IHEC-Deep/reference_genome/mm10
-          transcriptAnnotation=/icgc/ngs_share/assemblies/mm10/databases/gencode/gencodeM12/gencode.vM12.annotation_plain.w_GeneTranscriptID_MT_v2.gtf
+          genomeFasta=/icgc/dkfzlsdf/analysis/G200/puranach/IHEC_DEEP/reference_genome/mm10/GRCm38mm10.fa
+          genomeIndex=/icgc/dkfzlsdf/analysis/G200/puranach/IHEC_DEEP/reference_genome/mm10
+          transcriptAnnotation=/icgc/dkfzlsdf/analysis/G200/puranach/IHEC_DEEP/reference_genome/mm10/annotation/gencode.vM12.annotation_plain.w_GeneTranscriptID_MT_v2.gtf
           extraOptions="$extraOptions --wig-ref-prefix -"  # reference genome doesn't have chr prefix
         ;;
         *)
@@ -78,7 +78,6 @@ if [[ -z ${inputFolder+x} ]] || [[ -z ${outputFolder+x} ]] || \
   printHelp
   exit 1
 fi
-
 #make sure we have full paths everywhere
 inputFolder=$(readlink -m $inputFolder)
 outputFolder=$(readlink -m $outputFolder)
@@ -90,18 +89,37 @@ TMPWD=$(mktemp -d --tmpdir=$TMPDIR $sampleName.XXXXXXXX)
 
 mkdir -p $outputFolder/log
 
-#trim data
+#trimmed data
 mkdir -p $TMPWD/trimmed
 
-N_lanes=`find $inputFolder -name "*_R1_*q.gz" |wc -l`
-echo "job_array_id=\`echo \" $trimScript $inputFolder $TMPWD/trimmed \"| qsub -N trim.$(basename $TMPWD) -t 1-${N_lanes} -o $outputFolder/log/ | cut -d '.' -f 1\`" > $outputFolder/jobs.sh
+job_arraydepend=""
 
-job_array_id=`echo " $trimScript $inputFolder $TMPWD/trimmed "| qsub -N trim.$(basename $TMPWD) -t 1-${N_lanes} -o $outputFolder/log/ | cut -d '.' -f 1`
+for RunID in $inputFolder/run*; do   
+	if [ -d "$RunID" ];then
+		RUNDIR=$RunID/sequence/  
+		#echo "$RUNDIR"
+		mkdir -p $TMPWD/trimmed/$(basename $RunID)
+		N_lanes=`find $RUNDIR -name "*_R1*q.gz" |wc -l`
+		echo "job_array_id=\`echo \" $trimScript $RUNDIR $TMPWD/trimmed/$(basename $RunID) \"| qsub -N trim.$(basename $TMPWD) -t 1-${N_lanes} -o $outputFolder/log/ | cut -d '.' -f 1\`" > $outputFolder/jobs.sh 
+		job_array_id=`echo " $trimScript $RUNDIR $TMPWD/trimmed/$(basename $RunID) "| qsub -N trim.$(basename $TMPWD) -t 1-${N_lanes} -l walltime=36:00:00 -o $outputFolder/log/ | cut -d '.' -f 1`
+		job_arraydepend=$job_arraydepend" -W depend=afterokarray:$job_array_id"
+
+	fi 
+done
+
+echo "echo \"module load python/2.7.9; $grapeScript $sampleName $TMPWD $TMPWD/trimmed $genomeFasta $genomeIndex $transcriptAnnotation $outputFolder \"$extraOptions\" \" | qsub -l walltime=300:00:00,mem=40gb  $job_arraydepend -N grape.$(basename $TMPWD) -o $outputFolder/log/ " >> $outputFolder/jobs.sh
+
+echo "module load python/2.7.9; $grapeScript $sampleName $TMPWD $TMPWD/trimmed $genomeFasta $genomeIndex $transcriptAnnotation $outputFolder $extraOptions" | qsub -l walltime=300:00:00,mem=40gb  $job_arraydepend -N grape.$(basename $TMPWD) -o $outputFolder/log/
 
 
-echo "echo \"module load python/2.7.9; $grapeScript $sampleName $TMPWD $TMPWD/trimmed $genomeFasta $genomeIndex $transcriptAnnotation $outputFolder \"$extraOptions\" \" | qsub -l walltime=100:00:00,mem=200gb -q highmem -W depend=afterokarray:${job_array_id} -N grape.$(basename $TMPWD) -o $outputFolder/log/ " >> $outputFolder/jobs.sh
+#N_lanes=`find $inputFolder -name "*_R1_*q.gz" |wc -l`
+#echo "job_array_id=\`echo \" $trimScript $inputFolder $TMPWD/trimmed \"| qsub -N trim.$(basename $TMPWD) -t 1-${N_lanes} -o $outputFolder/log/ | cut -d '.' -f 1\`" > $outputFolder/jobs.sh
 
-echo "module load python/2.7.9; $grapeScript  $sampleName $TMPWD $TMPWD/trimmed $genomeFasta $genomeIndex $transcriptAnnotation $outputFolder $extraOptions" | qsub -l walltime=100:00:00,mem=200gb -q highmem -W depend=afterokarray:${job_array_id} -N grape.$(basename $TMPWD) -o $outputFolder/log/
+#job_array_id=`echo " $trimScript $inputFolder $TMPWD/trimmed "| qsub -N trim.$(basename $TMPWD) -t 1-${N_lanes} -o $outputFolder/log/ | cut -d '.' -f 1`
+
+#echo "echo \"module load python/2.7.9; $grapeScript $sampleName $TMPWD $TMPWD/trimmed $genomeFasta $genomeIndex $transcriptAnnotation $outputFolder \"$extraOptions\" \" | qsub -l walltime=100:00:00,mem=200gb -q highmem -W depend=afterokarray:${job_array_id} -N grape.$(basename $TMPWD) -o $outputFolder/log/ " >> $outputFolder/jobs.sh
+
+#echo "module load python/2.7.9; $grapeScript  $sampleName $TMPWD $TMPWD/trimmed $genomeFasta $genomeIndex $transcriptAnnotation $outputFolder $extraOptions" | qsub -l walltime=100:00:00,mem=200gb -q highmem -W depend=afterokarray:${job_array_id} -N grape.$(basename $TMPWD) -o $outputFolder/log/
 
 
 #bash $outputFolder/jobs.sh

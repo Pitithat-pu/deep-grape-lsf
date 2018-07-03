@@ -1,7 +1,10 @@
 <<<<<<< HEAD
 DEEP_metadata_bak.csv
+DEEP_metadata*
 reference_genome/mm10
-reference_genome/hg19
+reference_genome/hs38
+reference_genome
+ihec.rna-seq.processing/ihec.rna-seq.processing/ihec.rna-seq.grape-nf_bak.sh
 =======
 genomeDir
 *.fastq.gz
