@@ -79,9 +79,10 @@ for RunID in $trimmedFolder/run*; do
                 newname_R2=$(find $RunID -name "*L0[0-9][0-9]_R2*q.gz" | head -n1 \
                                 | sed -e 's/\(.*\)\/\(.*_[A-Za-z0-9]\{2,12\}\)_\(L0[0-9][0-9]\)_\(.*\).fq.gz/\1\/\2\_MergedLanes\_\4\.fq.gz /g')
                 echo "Concatenating fastq files"
-                zcat $RunID/*L0[0-9][0-9]_R1*q.gz | gzip > $newname_R1
-                zcat $RunID/*L0[0-9][0-9]_R2*q.gz | gzip > $newname_R2
-        fi
+                cat $RunID/*L0[0-9][0-9]_R1*q.gz > $newname_R1
+                cat $RunID/*L0[0-9][0-9]_R2*q.gz > $newname_R2
+        	echo "Done : concatenating fastq files"
+	fi
 done
 
 
@@ -131,7 +132,6 @@ done
 
 #grapeInstallation=/home/wangq/.nextflow/assets/guigolab/grape-nf/bin
 #source $grapeInstallation
-
 module load java/1.8.0_40
 
   echo -e "LOGG ($(date)) $name: Enter work folder" >&2

@@ -87,6 +87,7 @@ transcriptAnnotation=$(readlink -m $transcriptAnnotation)
 mkdir -p $TMPDIR
 TMPWD=$(mktemp -d --tmpdir=$TMPDIR $sampleName.XXXXXXXX)
 
+if [ -d "$outputFolder/log" ]; then rm -Rf $outputFolder/log; fi ## Clear log files
 mkdir -p $outputFolder/log
 
 #trimmed data

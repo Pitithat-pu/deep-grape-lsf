@@ -1,0 +1,357 @@
+
+gzip: stdout: Broken pipe
+Path to Cutadapt set as: 'cutadapt' (default)
+Cutadapt seems to be working fine (tested command 'cutadapt --version')
+
+
+AUTO-DETECTING ADAPTER TYPE
+===========================
+Attempting to auto-detect adapter type from the first 1 million sequences of the first file (>> /icgc/dkfzlsdf/project/DEEP/sequencing/strand_specific_mrna_sequencing/view-by-pid/51_Hf02_BlEM_Ct/replicate1/paired/run141203_SN471_0187_B_C5T86ACXX/sequence/51_Hf02_BlEM_Ct_mRNA_M_1_TTAGGC_L002_R1_001.fastq.gz <<)
+
+Found perfect matches for the following adapter sequences:
+Adapter type	Count	Sequence	Sequences analysed	Percentage
+Illumina	14612	AGATCGGAAGAGC	1000000	1.46
+Nextera	6	CTGTCTCTTATA	1000000	0.00
+smallRNA	2	TGGAATTCTCGG	1000000	0.00
+Using Illumina adapter for trimming (count: 14612). Second best hit was Nextera (count: 6)
+
+
+gzip: stdout: Broken pipe
+
+SUMMARISING RUN PARAMETERS
+==========================
+Input filename: /icgc/dkfzlsdf/project/DEEP/sequencing/strand_specific_mrna_sequencing/view-by-pid/51_Hf02_BlEM_Ct/replicate1/paired/run141203_SN471_0187_B_C5T86ACXX/sequence/51_Hf02_BlEM_Ct_mRNA_M_1_TTAGGC_L002_R1_001.fastq.gz
+Trimming mode: paired-end
+Trim Galore version: 0.4.5_dev
+Cutadapt version: 1.13
+Quality Phred score cutoff: 20
+Quality encoding type selected: ASCII+33
+Adapter sequence: 'AGATCGGAAGAGC' (Illumina TruSeq, Sanger iPCR; auto-detected)
+Maximum trimming error rate: 0.1 (default)
+Minimum required adapter overlap (stringency): 1 bp
+Minimum required sequence length for both reads before a sequence pair gets removed: 20 bp
+Output file(s) will be GZIP compressed
+
+Writing final adapter and quality trimmed output to 51_Hf02_BlEM_Ct_mRNA_M_1_TTAGGC_L002_R1_001_trimmed.fq.gz
+
+
+  >>> Now performing quality (cutoff 20) and adapter trimming in a single pass for the adapter sequence: 'AGATCGGAAGAGC' from file /icgc/dkfzlsdf/project/DEEP/sequencing/strand_specific_mrna_sequencing/view-by-pid/51_Hf02_BlEM_Ct/replicate1/paired/run141203_SN471_0187_B_C5T86ACXX/sequence/51_Hf02_BlEM_Ct_mRNA_M_1_TTAGGC_L002_R1_001.fastq.gz <<< 
+10000000 sequences processed
+20000000 sequences processed
+30000000 sequences processed
+This is cutadapt 1.13 with Python 2.7.9
+Command line parameters: -f fastq -e 0.1 -q 20 -O 1 -a AGATCGGAAGAGC /icgc/dkfzlsdf/project/DEEP/sequencing/strand_specific_mrna_sequencing/view-by-pid/51_Hf02_BlEM_Ct/replicate1/paired/run141203_SN471_0187_B_C5T86ACXX/sequence/51_Hf02_BlEM_Ct_mRNA_M_1_TTAGGC_L002_R1_001.fastq.gz
+Trimming 1 adapter with at most 10.0% errors in single-end mode ...
+Finished in 932.87 s (31 us/read; 1.96 M reads/minute).
+
+=== Summary ===
+
+Total reads processed:              30,446,983
+Reads with adapters:                10,983,364 (36.1%)
+Reads written (passing filters):    30,446,983 (100.0%)
+
+Total basepairs processed: 3,075,145,283 bp
+Quality-trimmed:              37,909,663 bp (1.2%)
+Total written (filtered):  3,008,418,049 bp (97.8%)
+
+=== Adapter 1 ===
+
+Sequence: AGATCGGAAGAGC; Type: regular 3'; Length: 13; Trimmed: 10983364 times.
+
+No. of allowed errors:
+0-9 bp: 0; 10-13 bp: 1
+
+Bases preceding removed adapters:
+  A: 28.9%
+  C: 31.9%
+  G: 21.6%
+  T: 17.7%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+1	6755952	7611745.8	0	6755952
+2	2295951	1902936.4	0	2295951
+3	653337	475734.1	0	653337
+4	210553	118933.5	0	210553
+5	123236	29733.4	0	123236
+6	93969	7433.3	0	93969
+7	86741	1858.3	0	86741
+8	73342	464.6	0	73342
+9	72407	116.1	0	72033 374
+10	63206	29.0	1	62131 1075
+11	54701	7.3	1	54146 555
+12	53423	1.8	1	52991 432
+13	44893	0.5	1	44563 330
+14	42970	0.5	1	42589 381
+15	37303	0.5	1	36984 319
+16	33957	0.5	1	33657 300
+17	31194	0.5	1	30899 295
+18	30589	0.5	1	30308 281
+19	16867	0.5	1	16696 171
+20	20427	0.5	1	20142 285
+21	18893	0.5	1	18631 262
+22	17000	0.5	1	16780 220
+23	15465	0.5	1	15259 206
+24	14601	0.5	1	14344 257
+25	12868	0.5	1	12642 226
+26	11154	0.5	1	10970 184
+27	10564	0.5	1	10396 168
+28	10037	0.5	1	9865 172
+29	8134	0.5	1	8001 133
+30	8476	0.5	1	8332 144
+31	5043	0.5	1	4967 76
+32	5805	0.5	1	5677 128
+33	4491	0.5	1	4424 67
+34	4855	0.5	1	4763 92
+35	4550	0.5	1	4479 71
+36	3809	0.5	1	3751 58
+37	3399	0.5	1	3328 71
+38	2865	0.5	1	2804 61
+39	2724	0.5	1	2674 50
+40	2577	0.5	1	2519 58
+41	2779	0.5	1	2731 48
+42	1070	0.5	1	1049 21
+43	1501	0.5	1	1475 26
+44	1057	0.5	1	1038 19
+45	1046	0.5	1	1023 23
+46	1120	0.5	1	1085 35
+47	765	0.5	1	744 21
+48	832	0.5	1	791 41
+49	774	0.5	1	742 32
+50	644	0.5	1	612 32
+51	590	0.5	1	559 31
+52	583	0.5	1	550 33
+53	523	0.5	1	485 38
+54	214	0.5	1	196 18
+55	248	0.5	1	224 24
+56	258	0.5	1	237 21
+57	205	0.5	1	181 24
+58	196	0.5	1	164 32
+59	185	0.5	1	150 35
+60	146	0.5	1	112 34
+61	177	0.5	1	117 60
+62	204	0.5	1	101 103
+63	270	0.5	1	101 169
+64	157	0.5	1	68 89
+65	162	0.5	1	43 119
+66	233	0.5	1	44 189
+67	418	0.5	1	37 381
+68	806	0.5	1	39 767
+69	1594	0.5	1	37 1557
+70	788	0.5	1	59 729
+71	442	0.5	1	25 417
+72	242	0.5	1	13 229
+73	70	0.5	1	5 65
+74	20	0.5	1	2 18
+75	28	0.5	1	1 27
+76	19	0.5	1	0 19
+77	23	0.5	1	0 23
+78	31	0.5	1	0 31
+79	32	0.5	1	0 32
+80	26	0.5	1	0 26
+81	11	0.5	1	0 11
+82	32	0.5	1	0 32
+83	23	0.5	1	0 23
+84	26	0.5	1	0 26
+85	20	0.5	1	0 20
+86	23	0.5	1	0 23
+87	23	0.5	1	0 23
+88	32	0.5	1	0 32
+89	27	0.5	1	0 27
+90	35	0.5	1	0 35
+91	36	0.5	1	0 36
+92	23	0.5	1	0 23
+93	19	0.5	1	0 19
+94	17	0.5	1	1 16
+95	23	0.5	1	0 23
+96	20	0.5	1	0 20
+97	22	0.5	1	0 22
+98	28	0.5	1	0 28
+99	14	0.5	1	0 14
+100	15	0.5	1	0 15
+101	89	0.5	1	0 89
+
+
+RUN STATISTICS FOR INPUT FILE: /icgc/dkfzlsdf/project/DEEP/sequencing/strand_specific_mrna_sequencing/view-by-pid/51_Hf02_BlEM_Ct/replicate1/paired/run141203_SN471_0187_B_C5T86ACXX/sequence/51_Hf02_BlEM_Ct_mRNA_M_1_TTAGGC_L002_R1_001.fastq.gz
+=============================================
+30446983 sequences processed in total
+The length threshold of paired-end sequences gets evaluated later on (in the validation step)
+
+
+SUMMARISING RUN PARAMETERS
+==========================
+Input filename: /icgc/dkfzlsdf/project/DEEP/sequencing/strand_specific_mrna_sequencing/view-by-pid/51_Hf02_BlEM_Ct/replicate1/paired/run141203_SN471_0187_B_C5T86ACXX/sequence/51_Hf02_BlEM_Ct_mRNA_M_1_TTAGGC_L002_R2_001.fastq.gz
+Trimming mode: paired-end
+Trim Galore version: 0.4.5_dev
+Cutadapt version: 1.13
+Quality Phred score cutoff: 20
+Quality encoding type selected: ASCII+33
+Adapter sequence: 'AGATCGGAAGAGC' (Illumina TruSeq, Sanger iPCR; auto-detected)
+Maximum trimming error rate: 0.1 (default)
+Minimum required adapter overlap (stringency): 1 bp
+Minimum required sequence length for both reads before a sequence pair gets removed: 20 bp
+Output file(s) will be GZIP compressed
+
+Writing final adapter and quality trimmed output to 51_Hf02_BlEM_Ct_mRNA_M_1_TTAGGC_L002_R2_001_trimmed.fq.gz
+
+
+  >>> Now performing quality (cutoff 20) and adapter trimming in a single pass for the adapter sequence: 'AGATCGGAAGAGC' from file /icgc/dkfzlsdf/project/DEEP/sequencing/strand_specific_mrna_sequencing/view-by-pid/51_Hf02_BlEM_Ct/replicate1/paired/run141203_SN471_0187_B_C5T86ACXX/sequence/51_Hf02_BlEM_Ct_mRNA_M_1_TTAGGC_L002_R2_001.fastq.gz <<< 
+10000000 sequences processed
+20000000 sequences processed
+30000000 sequences processed
+This is cutadapt 1.13 with Python 2.7.9
+Command line parameters: -f fastq -e 0.1 -q 20 -O 1 -a AGATCGGAAGAGC /icgc/dkfzlsdf/project/DEEP/sequencing/strand_specific_mrna_sequencing/view-by-pid/51_Hf02_BlEM_Ct/replicate1/paired/run141203_SN471_0187_B_C5T86ACXX/sequence/51_Hf02_BlEM_Ct_mRNA_M_1_TTAGGC_L002_R2_001.fastq.gz
+Trimming 1 adapter with at most 10.0% errors in single-end mode ...
+Finished in 952.67 s (31 us/read; 1.92 M reads/minute).
+
+=== Summary ===
+
+Total reads processed:              30,446,983
+Reads with adapters:                11,275,488 (37.0%)
+Reads written (passing filters):    30,446,983 (100.0%)
+
+Total basepairs processed: 3,075,145,283 bp
+Quality-trimmed:              83,048,874 bp (2.7%)
+Total written (filtered):  2,963,175,453 bp (96.4%)
+
+=== Adapter 1 ===
+
+Sequence: AGATCGGAAGAGC; Type: regular 3'; Length: 13; Trimmed: 11275488 times.
+
+No. of allowed errors:
+0-9 bp: 0; 10-13 bp: 1
+
+Bases preceding removed adapters:
+  A: 31.4%
+  C: 30.7%
+  G: 22.8%
+  T: 15.1%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+1	6866088	7611745.8	0	6866088
+2	2365098	1902936.4	0	2365098
+3	763999	475734.1	0	763999
+4	221772	118933.5	0	221772
+5	125114	29733.4	0	125114
+6	93129	7433.3	0	93129
+7	86275	1858.3	0	86275
+8	72488	464.6	0	72488
+9	73387	116.1	0	72567 820
+10	64629	29.0	1	63221 1408
+11	53900	7.3	1	51741 2159
+12	54977	1.8	1	54254 723
+13	45499	0.5	1	45060 439
+14	59097	0.5	1	58628 469
+15	21770	0.5	1	21501 269
+16	34951	0.5	1	34600 351
+17	44379	0.5	1	44039 340
+18	10724	0.5	1	10562 162
+19	28413	0.5	1	28230 183
+20	11595	0.5	1	11439 156
+21	16173	0.5	1	16021 152
+22	16471	0.5	1	16307 164
+23	15244	0.5	1	15046 198
+24	16492	0.5	1	16330 162
+25	10867	0.5	1	10735 132
+26	11730	0.5	1	11557 173
+27	10816	0.5	1	10693 123
+28	10311	0.5	1	10185 126
+29	7479	0.5	1	7340 139
+30	15104	0.5	1	14939 165
+31	422	0.5	1	367 55
+32	6544	0.5	1	6498 46
+33	1529	0.5	1	1478 51
+34	3861	0.5	1	3821 40
+35	3974	0.5	1	3890 84
+36	3508	0.5	1	3460 48
+37	3048	0.5	1	2991 57
+38	2821	0.5	1	2745 76
+39	2561	0.5	1	2496 65
+40	2352	0.5	1	2323 29
+41	2150	0.5	1	2090 60
+42	3079	0.5	1	3028 51
+43	423	0.5	1	397 26
+44	1327	0.5	1	1278 49
+45	1702	0.5	1	1621 81
+46	295	0.5	1	269 26
+47	829	0.5	1	800 29
+48	706	0.5	1	674 32
+49	726	0.5	1	650 76
+50	800	0.5	1	769 31
+51	862	0.5	1	832 30
+52	211	0.5	1	181 30
+53	315	0.5	1	279 36
+54	319	0.5	1	268 51
+55	280	0.5	1	245 35
+56	219	0.5	1	188 31
+57	186	0.5	1	167 19
+58	185	0.5	1	166 19
+59	154	0.5	1	132 22
+60	148	0.5	1	130 18
+61	148	0.5	1	124 24
+62	163	0.5	1	107 56
+63	182	0.5	1	134 48
+64	161	0.5	1	102 59
+65	208	0.5	1	111 97
+66	114	0.5	1	71 43
+67	41	0.5	1	15 26
+68	19	0.5	1	6 13
+69	29	0.5	1	1 28
+70	56	0.5	1	1 55
+71	36	0.5	1	1 35
+72	38	0.5	1	0 38
+73	33	0.5	1	0 33
+74	23	0.5	1	2 21
+75	22	0.5	1	0 22
+76	21	0.5	1	0 21
+77	21	0.5	1	0 21
+78	26	0.5	1	0 26
+79	23	0.5	1	0 23
+80	24	0.5	1	0 24
+81	47	0.5	1	0 47
+82	16	0.5	1	0 16
+83	23	0.5	1	0 23
+84	30	0.5	1	0 30
+85	12	0.5	1	0 12
+86	21	0.5	1	0 21
+87	25	0.5	1	1 24
+88	17	0.5	1	0 17
+89	26	0.5	1	0 26
+90	15	0.5	1	0 15
+91	26	0.5	1	0 26
+92	57	0.5	1	0 57
+93	24	0.5	1	0 24
+94	13	0.5	1	0 13
+95	27	0.5	1	0 27
+96	27	0.5	1	0 27
+97	30	0.5	1	0 30
+98	59	0.5	1	0 59
+99	18	0.5	1	0 18
+100	39	0.5	1	0 39
+101	41	0.5	1	0 41
+
+
+RUN STATISTICS FOR INPUT FILE: /icgc/dkfzlsdf/project/DEEP/sequencing/strand_specific_mrna_sequencing/view-by-pid/51_Hf02_BlEM_Ct/replicate1/paired/run141203_SN471_0187_B_C5T86ACXX/sequence/51_Hf02_BlEM_Ct_mRNA_M_1_TTAGGC_L002_R2_001.fastq.gz
+=============================================
+30446983 sequences processed in total
+The length threshold of paired-end sequences gets evaluated later on (in the validation step)
+
+Validate paired-end files 51_Hf02_BlEM_Ct_mRNA_M_1_TTAGGC_L002_R1_001_trimmed.fq.gz and 51_Hf02_BlEM_Ct_mRNA_M_1_TTAGGC_L002_R2_001_trimmed.fq.gz
+file_1: 51_Hf02_BlEM_Ct_mRNA_M_1_TTAGGC_L002_R1_001_trimmed.fq.gz, file_2: 51_Hf02_BlEM_Ct_mRNA_M_1_TTAGGC_L002_R2_001_trimmed.fq.gz
+
+
+>>>>> Now validing the length of the 2 paired-end infiles: 51_Hf02_BlEM_Ct_mRNA_M_1_TTAGGC_L002_R1_001_trimmed.fq.gz and 51_Hf02_BlEM_Ct_mRNA_M_1_TTAGGC_L002_R2_001_trimmed.fq.gz <<<<<
+Writing validated paired-end read 1 reads to 51_Hf02_BlEM_Ct_mRNA_M_1_TTAGGC_L002_R1_001_val_1.fq.gz
+Writing validated paired-end read 2 reads to 51_Hf02_BlEM_Ct_mRNA_M_1_TTAGGC_L002_R2_001_val_2.fq.gz
+
+Total number of sequences analysed: 30446983
+
+Number of sequence pairs removed because at least one read was shorter than the length cutoff (20 bp): 302236 (0.99%)
+
+Deleting both intermediate output files 51_Hf02_BlEM_Ct_mRNA_M_1_TTAGGC_L002_R1_001_trimmed.fq.gz and 51_Hf02_BlEM_Ct_mRNA_M_1_TTAGGC_L002_R2_001_trimmed.fq.gz
+
+====================================================================================================
+
