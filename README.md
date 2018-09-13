@@ -30,12 +30,12 @@ Tested inside DKFZ Cluster environment on 26 June 2018
 
    2.3 activate the environment
    
-       conda activate grape-nf3
+       source activate grape-nf3
        nextflow pull guigolab/grape-nf
        unset PYTHONHOME  ## unset PYTHONHOME given by the module load python
 
    2.4 test if the setup is right
-   
+        (please check for path to grape-nf installation)
        nextflow run -without-docker -w work grape-nf --index \
        ~/.nextflow/assets/guigolab/grape-nf/test-index.txt \
        --genome ~/.nextflow/assets/guigolab/grape-nf/data/genome.fa \
