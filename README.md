@@ -13,9 +13,8 @@ Tested inside DKFZ Cluster environment on 26 June 2018
 2. In detail 
    
    2.0 In DKFZ cluster environment
-        ```
+       
 	module load python/2.7.9
-	```
 
    2.1 install and configure bioconda (https://bioconda.github.io)
    
