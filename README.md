@@ -13,7 +13,9 @@ Tested inside DKFZ Cluster environment on 26 June 2018
 2. In detail 
    
    2.0 In DKFZ cluster environment
-        module load python/2.7.9
+        ```
+	module load python/2.7.9
+	```
 
    2.1 install and configure bioconda (https://bioconda.github.io)
    
@@ -35,12 +37,13 @@ Tested inside DKFZ Cluster environment on 26 June 2018
        unset PYTHONHOME  ## unset PYTHONHOME given by the module load python
 
    2.4 test if the setup is right
-        (please check for path to grape-nf installation)
-       nextflow run -without-docker -w work grape-nf --index \
-       ~/.nextflow/assets/guigolab/grape-nf/test-index.txt \
-       --genome ~/.nextflow/assets/guigolab/grape-nf/data/genome.fa \
-       --annotation ~/.nextflow/assets/guigolab/grape-nf/data/annotation.gtf
-
+       (please check for path to grape-nf installation)
+	```
+	nextflow run -without-docker -w work grape-nf --index \
+            ~/.nextflow/assets/guigolab/grape-nf/test-index.txt \
+            --genome ~/.nextflow/assets/guigolab/grape-nf/data/genome.fa \
+            --annotation ~/.nextflow/assets/guigolab/grape-nf/data/annotation.gtf
+	```
 ### Build reference genome index for STAR alignment
    1. Inside reference_genome directory, create/edit configuration file with parameters as shown in config_hg10.ini
    2. Execute STAR_index_generation.sh with the configuration file.
