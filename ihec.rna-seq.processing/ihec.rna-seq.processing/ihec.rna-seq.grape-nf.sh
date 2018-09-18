@@ -75,9 +75,9 @@ for RunID in $trimmedFolder/run*; do
                         continue ## This run is contained within one lane.
                 fi
                 newname_R1=$(find $RunID -name "*L0[0-9][0-9]_R1*q.gz" | head -n1 \
-                                | sed -e 's/\(.*\)\/\(.*_[A-Za-z0-9]\{2,12\}\)_\(L0[0-9][0-9]\)_\(.*\).fq.gz/\1\/\2\_MergedLanes\_\4\.fq.gz /g')
+                                | sed -e 's/\(.*\)\/\(.*_[A-Za-z0-9]\{2,12\}\)_\(L0[0-9][0-9]\)_\(.*\).fq.gz/\1\/\2\_MergedLanes\_\4\.fq.gz/g')
                 newname_R2=$(find $RunID -name "*L0[0-9][0-9]_R2*q.gz" | head -n1 \
-                                | sed -e 's/\(.*\)\/\(.*_[A-Za-z0-9]\{2,12\}\)_\(L0[0-9][0-9]\)_\(.*\).fq.gz/\1\/\2\_MergedLanes\_\4\.fq.gz /g')
+                                | sed -e 's/\(.*\)\/\(.*_[A-Za-z0-9]\{2,12\}\)_\(L0[0-9][0-9]\)_\(.*\).fq.gz/\1\/\2\_MergedLanes\_\4\.fq.gz/g')
                 echo "Concatenating fastq files"
                 cat $RunID/*L0[0-9][0-9]_R1*q.gz > $newname_R1
                 cat $RunID/*L0[0-9][0-9]_R2*q.gz > $newname_R2
@@ -132,8 +132,9 @@ done
 
 #grapeInstallation=/home/wangq/.nextflow/assets/guigolab/grape-nf/bin
 #source $grapeInstallation
-module load java/1.8.0_40
+#module load java/1.8.0_40
 
+module load java/1.8.0_131
   echo -e "LOGG ($(date)) $name: Enter work folder" >&2
   pushd $outputFolder
     nextflow run -without-docker -w $outputFolder/work grape-nf --index $outputFolder/readIndex.tsv --genome $genomeFasta --annotation $transcriptAnnotation --steps mapping,bigwig,quantification --genomeIndex $genomeIndex $extraOptions || exit 8
@@ -144,7 +145,7 @@ module load java/1.8.0_40
   popd &> /dev/null
 
 
-deactivate
+source deactivate
 
 
 #cleanup read folder

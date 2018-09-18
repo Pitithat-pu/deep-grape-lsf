@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # deep-grape
 
 Tested inside DKFZ Cluster environment on 26 June 2018
@@ -64,3 +65,7 @@ Tested inside DKFZ Cluster environment on 26 June 2018
 2. Run script to start.
    ```./ihec.rna-seq.processing/call_rna_seq_processing.sh DEEP_metadata.csv``` 
 
+=======
+# deep-grape-lsf
+Deep-grape RNA-seq workflow for LSF cluster
+>>>>>>> 75b1242a98249cceed80fbdb9cd2b4bfc23d88f4

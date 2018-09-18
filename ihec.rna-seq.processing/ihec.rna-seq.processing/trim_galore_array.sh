@@ -36,7 +36,7 @@ fi
 pushd $inputRoot /dev/null
 inputRoot=`pwd -P`
 
-file1=$( find . -name "*_R1*q.gz" |sort|head -n ${PBS_ARRAYID}|tail -n 1 |sed -e 's#\./##' )
+file1=$( find . -name "*_R1*q.gz" |sort|head -n ${LSB_JOBINDEX}|tail -n 1 |sed -e 's#\./##' )
 
 popd > /dev/null
 

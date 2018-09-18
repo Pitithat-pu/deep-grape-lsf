@@ -1,6 +1,6 @@
 name="ihec.rna-seq.processing.sh"
 
-wrapper_DIR=/abi/data/puranach/IHEC-Deep/ihec.rna-seq.processing/
+wrapper_DIR=/home/puranach/deep-grape/ihec.rna-seq.processing/
 
 grapeScript=${wrapper_DIR}/ihec.rna-seq.processing/ihec.rna-seq.grape-nf.sh
 trimScript=${wrapper_DIR}/ihec.rna-seq.processing/trim_galore_array.sh
@@ -101,28 +101,23 @@ for RunID in $inputFolder/run*; do
 		#echo "$RUNDIR"
 		mkdir -p $TMPWD/trimmed/$(basename $RunID)
 		N_lanes=`find $RUNDIR -name "*_R1*q.gz" |wc -l`
-		echo "job_array_id=\`echo \" $trimScript $RUNDIR $TMPWD/trimmed/$(basename $RunID) \"| qsub -N trim.$(basename $TMPWD) -t 1-${N_lanes} -o $outputFolder/log/ | cut -d '.' -f 1\`" > $outputFolder/jobs.sh 
-		job_array_id=`echo " $trimScript $RUNDIR $TMPWD/trimmed/$(basename $RunID) "| qsub -N trim.$(basename $TMPWD) -t 1-${N_lanes} -l walltime=36:00:00 -o $outputFolder/log/ | cut -d '.' -f 1`
-		job_arraydepend=$job_arraydepend" -W depend=afterokarray:$job_array_id"
+		#echo "job_array_id=\`echo \" $trimScript $RUNDIR $TMPWD/trimmed/$(basename $RunID) \"| qsub -N trim.$(basename $TMPWD) -t 1-${N_lanes} -o $outputFolder/log/ | cut -d '.' -f 1\`" > $outputFolder/jobs.sh 
+		#job_array_id=`echo " $trimScript $RUNDIR $TMPWD/trimmed/$(basename $RunID) "| qsub -N trim.$(basename $TMPWD) -t 1-${N_lanes} -l walltime=36:00:00 -o $outputFolder/log/ | cut -d '.' -f 1`
+		#job_arraydepend=$job_arraydepend" -W depend=afterokarray:$job_array_id"
+
+		echo "job_array_id=\`echo \" $trimScript $RUNDIR $TMPWD/trimmed/$(basename $RunID) \"| bsub -J trim.$(basename $TMPWD)[1-${N_lanes}] -oo $outputFolder/log/ | head -n1 | cut -d'<' -f2 | cut -d'>' -f1\`" > $outputFolder/jobs.sh
+		job_array_id=`echo " $trimScript $RUNDIR $TMPWD/trimmed/$(basename $RunID) "| bsub -J trim.$(basename $TMPWD)[1-${N_lanes}] -W 36:00 -oo $outputFolder/log/ | head -n1 | cut -d'<' -f2 | cut -d'>' -f1`
+		#echo ${job_array_id}
+		job_arraydepend="${job_arraydepend}done(${job_array_id})"
 
 	fi 
 done
 
-echo "echo \"module load python/2.7.9; $grapeScript $sampleName $TMPWD $TMPWD/trimmed $genomeFasta $genomeIndex $transcriptAnnotation $outputFolder \"$extraOptions\" \" | qsub -l walltime=300:00:00,mem=40gb  $job_arraydepend -N grape.$(basename $TMPWD) -o $outputFolder/log/ " >> $outputFolder/jobs.sh
+job_arraydepend=$(echo ${job_arraydepend} | sed 's/)done/) \&\& done/')
 
-echo "module load python/2.7.9; $grapeScript $sampleName $TMPWD $TMPWD/trimmed $genomeFasta $genomeIndex $transcriptAnnotation $outputFolder $extraOptions" | qsub -l walltime=300:00:00,mem=40gb  $job_arraydepend -N grape.$(basename $TMPWD) -o $outputFolder/log/
+echo "echo \"module load anaconda3/5.1.0; $grapeScript $sampleName $TMPWD $TMPWD/trimmed $genomeFasta $genomeIndex $transcriptAnnotation $outputFolder \"$extraOptions\" \" | bsub -W 300:00  -M 40GB -w \"$job_arraydepend\" -J grape.$(basename $TMPWD) -oo $outputFolder/log/ " >> $outputFolder/jobs.sh
 
+echo "module load anaconda3/5.1.0; $grapeScript $sampleName $TMPWD $TMPWD/trimmed $genomeFasta $genomeIndex $transcriptAnnotation $outputFolder \"$extraOptions\" " | bsub -W 300:00  -M 40GB -w $job_arraydepend -J grape.$(basename $TMPWD) -oo $outputFolder/log/
 
-#N_lanes=`find $inputFolder -name "*_R1_*q.gz" |wc -l`
-#echo "job_array_id=\`echo \" $trimScript $inputFolder $TMPWD/trimmed \"| qsub -N trim.$(basename $TMPWD) -t 1-${N_lanes} -o $outputFolder/log/ | cut -d '.' -f 1\`" > $outputFolder/jobs.sh
-
-#job_array_id=`echo " $trimScript $inputFolder $TMPWD/trimmed "| qsub -N trim.$(basename $TMPWD) -t 1-${N_lanes} -o $outputFolder/log/ | cut -d '.' -f 1`
-
-#echo "echo \"module load python/2.7.9; $grapeScript $sampleName $TMPWD $TMPWD/trimmed $genomeFasta $genomeIndex $transcriptAnnotation $outputFolder \"$extraOptions\" \" | qsub -l walltime=100:00:00,mem=200gb -q highmem -W depend=afterokarray:${job_array_id} -N grape.$(basename $TMPWD) -o $outputFolder/log/ " >> $outputFolder/jobs.sh
-
-#echo "module load python/2.7.9; $grapeScript  $sampleName $TMPWD $TMPWD/trimmed $genomeFasta $genomeIndex $transcriptAnnotation $outputFolder $extraOptions" | qsub -l walltime=100:00:00,mem=200gb -q highmem -W depend=afterokarray:${job_array_id} -N grape.$(basename $TMPWD) -o $outputFolder/log/
-
-
-#bash $outputFolder/jobs.sh
 
 echo -e "LOGG ($(date)) $name: Jobs submitted" >&2
