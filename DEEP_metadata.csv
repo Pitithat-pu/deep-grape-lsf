@@ -1,11 +1,7 @@
 DeepFolder	datatype	sampleID	replicate	refererence_Genome
-/icgc/dkfzlsdf/project/DEEP/sequencing/	strand_specific_rna_sequencing	51_Hf10_SFMa_RD	replicate1	hs38
-/icgc/dkfzlsdf/project/DEEP/sequencing/	strand_specific_rna_sequencing	51_Hf10_SFTM4_RD	replicate1	hs38
-/icgc/dkfzlsdf/project/DEEP/sequencing/	strand_specific_rna_sequencing	51_Hf11_SFCM_RD	replicate1	hs38
-/icgc/dkfzlsdf/project/DEEP/sequencing/	strand_specific_rna_sequencing	51_Hf11_SFEM_RD	replicate1	hs38
-/icgc/dkfzlsdf/project/DEEP/sequencing/	strand_specific_rna_sequencing	51_Hf12_SFTR_RD	replicate1	hs38
-/icgc/dkfzlsdf/project/DEEP/sequencing/	strand_specific_rna_sequencing	51_Hf13_BlTA_Ct	replicate1	hs38
-/icgc/dkfzlsdf/project/DEEP/sequencing/	strand_specific_rna_sequencing	52_Hf3a_CoMu_Ct	replicate1	hs38
-/icgc/dkfzlsdf/project/DEEP/sequencing/	strand_specific_rna_sequencing	52_Hf3b_CoMu_UC	replicate1	hs38
-/icgc/dkfzlsdf/project/DEEP/sequencing/	strand_specific_rna_sequencing	52_Hm1a_CoMu_Ct	replicate1	hs38
-/icgc/dkfzlsdf/project/DEEP/sequencing/	strand_specific_rna_sequencing	52_Hm1b_CoMu_UC	replicate1	hs38
+/icgc/dkfzlsdf/project/DEEP/sequencing/	strand_specific_rna_sequencing	53_Hm01_LPFi_Ct	replicate1	hs38
+/icgc/dkfzlsdf/project/DEEP/sequencing/	strand_specific_rna_sequencing	53_Hm02_LPFi_RA	replicate1	hs38
+/icgc/dkfzlsdf/project/DEEP/sequencing/	strand_specific_rna_sequencing	53_Hm03_LPFi_EA	replicate1	hs38
+/icgc/dkfzlsdf/project/DEEP/sequencing/	strand_specific_rna_sequencing	53_Hm04_LPFi_Ct	replicate1	hs38
+/icgc/dkfzlsdf/project/DEEP/sequencing/	strand_specific_rna_sequencing	53_Hm05_LPFi_RA	replicate1	hs38
+/icgc/dkfzlsdf/project/DEEP/sequencing/	strand_specific_rna_sequencing	53_Hm06_LPFi_EA	replicate1	hs38

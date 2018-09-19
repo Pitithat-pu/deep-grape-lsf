@@ -1,10 +1,10 @@
 <<<<<<< HEAD
 # deep-grape
 
-Tested inside DKFZ Cluster environment on 26 June 2018
+Tested inside DKFZ LSF Cluster environment on 18 September 2018
 ### Prerequisite
 1. Python 2.7.9 (module load python/2.7.9 in dkfz_cluster)
-2. conda (included when module load python/2.7.9 in dkfz_cluster)
+2. conda (included when module load anaconda3/5.1.0 in dkfz_cluster)
 3. TrimGalore
 4. cutadapt (TrimGalore prerequisite)
 
@@ -13,7 +13,7 @@ Tested inside DKFZ Cluster environment on 26 June 2018
 1. Brief installation instruction are contained in establish_and_test.sh. Please ```module load python/2.7.9``` before running the script
 2. In detail 
    
-   2.0 In DKFZ cluster environment
+   2.0 In DKFZ LSF cluster environment
        
 	module load python/2.7.9
 

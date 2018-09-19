@@ -1,7 +1,7 @@
 name="ihec.rna-seq.processing.sh"
 
-wrapper_DIR=/home/puranach/deep-grape/ihec.rna-seq.processing/
 
+wrapper_DIR="$( cd "$(dirname "$0")" ; pwd -P )"
 grapeScript=${wrapper_DIR}/ihec.rna-seq.processing/ihec.rna-seq.grape-nf.sh
 trimScript=${wrapper_DIR}/ihec.rna-seq.processing/trim_galore_array.sh
 TMPDIR=/icgc/dkfzlsdf/analysis/G200/puranach/temp_IHEC_DEEP

@@ -3,7 +3,7 @@ set -e
 #data_type=strand_specific_mrna_sequencing
 DIR=/icgc/dkfzlsdf/analysis/G200/puranach/IHEC_DEEP
 #mkdir -p ${DIR}/${data_type}
-SCRIPT_DIR=/home/puranach/deep-grape/ihec.rna-seq.processing
+SCRIPT_DIR="$( cd "$(dirname "$0")" ; pwd -P )"
 #sampleID=41_Mm10_LiNP_OC
 #runID=run140805_SN758_0175_AC4HJWACXX
 #replicate=replicate1
